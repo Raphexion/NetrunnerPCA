@@ -5,6 +5,9 @@ import pickle
 from settings import eigen_folder
 import os
 
+if not os.path.exists(eigen_folder):
+    os.makedirs(eigen_folder)
+
 # load images
 all_images = get_images()
 org_shape = all_images[0].shape
