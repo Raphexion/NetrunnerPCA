@@ -1,8 +1,9 @@
-from imageio import *
+from imageio import get_images, image_to_point, point_to_image
 from spaces import create_space
 from functools import partial
-from matplotlib import pylab
 import pickle
+from settings import eigen_folder
+import os
 
 # load images
 all_images = get_images()
@@ -26,4 +27,6 @@ with open('V.pickle', 'wb') as handle:
 eigenimages = map(partial(point_to_image, org_shape), V)
 
 for ii, ei in enumerate(eigenimages):
-    ei.save('eigenimage_{:04d}.png'.format(ii))
+    fn = 'eigenimage_{:04d}.png'.format(ii)
+    lc = os.path.join(eigen_folder, fn)
+    ei.save(lc)

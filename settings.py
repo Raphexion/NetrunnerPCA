@@ -1,1 +1,2 @@
-image_folder='images'
+image_folder = 'images'
+eigen_folder = 'eigen'

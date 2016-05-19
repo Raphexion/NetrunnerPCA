@@ -2,7 +2,7 @@ import numpy as np
 
 
 def create_space(points):
-    X = np.vstack(points) # .transpose()
+    X = np.vstack(points)
     U, ss, V = np.linalg.svd(X, full_matrices=0)
 
     # the eigenvalues of SVD is the square of
@@ -14,6 +14,7 @@ def create_space(points):
     s = s / np.sum(s)
 
     return U, s, V
+
 
 def transform(s, V, x, depth=1.0):
     taken_V = []
@@ -27,10 +28,10 @@ def transform(s, V, x, depth=1.0):
     y = np.zeros_like(x)
     tot_resp = 0.0
     for Vv in taken_V:
-       resp = np.dot(x, Vv)
-       tot_resp += resp
+        resp = np.dot(x, Vv)
+        tot_resp += resp
 
-       y += resp * Vv
+        y += resp * Vv
 
-    y = -y # why do we need this?
+    y = -y  # why do we need this?
     return y / tot_resp

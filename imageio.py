@@ -3,13 +3,15 @@ from PIL import Image
 import matplotlib.image as mpimg
 import numpy as np
 
+
 def _get_image_filenames(folder):
-    images=[]
+    images = []
     for root, dirs, files in os.walk(folder):
         for file in files:
             if file.endswith(('.png',)):
                 images.append(os.path.join(root, file))
     return images
+
 
 def get_images(folder='images/'):
     """
@@ -21,8 +23,10 @@ def get_images(folder='images/'):
     rgb_images = [im[:, :, 0:3] for im in org_images]
     return rgb_images
 
+
 def image_to_point(image):
     return np.array(image.ravel(), dtype=np.float32)
+
 
 def point_to_image(org_shape, point_):
     point = point_.copy().reshape(org_shape)

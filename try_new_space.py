@@ -1,8 +1,8 @@
-from imageio import *
-from spaces import create_space, transform
-from functools import partial
-from matplotlib import pylab
+from imageio import get_images, image_to_point, point_to_image
+from spaces import transform
 import pickle
+import numpy as np
+
 
 # load images
 all_images = get_images()
